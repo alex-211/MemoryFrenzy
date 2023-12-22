@@ -1,2 +1,3 @@
-body {background-image: linear-gradient(120deg, #1E872F 28.9%, #061F16 100%)}
+body.home {background-image: linear-gradient(120deg, #1E872F 28.9%, #061F16 100%)}
+body.login {background: linear-gradient(180deg, #1E872F 0%, #061F16 100%);}
 
