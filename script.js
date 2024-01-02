@@ -5,7 +5,7 @@ function test()
     alert("This button works!");
 }
 
-var people = []; // this array will contain objects that represent users 
+var people = [] // this array will contain objects that represent users 
 var uc = 0; // this is our user counter 
 var lpc = null; // logged in player code (fancy name for position in array)
  
@@ -23,10 +23,30 @@ var lpc = null; // logged in player code (fancy name for position in array)
 
 function login()
 {
-    // Checks if the credentials are valid
+    let usernameTemp = document.getElementById("username").value;
+    let password = document.getElementById("password").value;
+
+    // check if the user has signed up already
+    for (let i = 0; i < uc; i++)
+    {
+        if (usernameTemp == people[i].username && passwordTemp == people[i].password)
+        {
+            lpc = i;
+            switchPage("home.html"); // no need 4 break cuz this call will break the cycle on its own
+        }
+        if (usernameTemp == people[i].username && passwordTemp != people[i].password)
+        {
+            // show smth about incorrect password
+        }
+        else 
+        {
+            // show smth about no user found or wrong username
+        }
+    }
+    
 }
 
-function signup() //!  this fctn does not get called when i press button
+function signup()
 {
     let usernameTemp = document.getElementById("username").value;
     let passwordTemp = document.getElementById("password").value;
@@ -49,20 +69,30 @@ function signup() //!  this fctn does not get called when i press button
     lpc = uc;
     uc++;
 
-    window.location.href = "home.html"
+    switchPage("home.html");
+}
+
+function switchPage(target)
+{
+    // move stuff from array to lcl storage;
+    localStorage.setItem('myUserData', JSON.stringify(people));
+    window.location.href = target;
 }
 
 function loadHome()
 {
+    const storedData = localStorage.getItem('myUserData');
+    people = JSON.parse(storedData) || [];
+    
     console.log("Thy function 'loadHome' hath been summoned");
     console.log(lpc);
     console.log(people);
-    
+
     let games_played = document.getElementById("games-played");
     let time_played = document.getElementById("time-played");
     let total_score = document.getElementById("total-score");
     let avg_score = document.getElementById("avg-score");
-    let greetings = document.getElementById("user-greetings");
+    let greetings = document.getElementById("user-greeting");
 
     if (people[lpc].gamesPlayed == 0)
     {
