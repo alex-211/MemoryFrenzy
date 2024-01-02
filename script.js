@@ -9,7 +9,7 @@ var people = []; // this array will contain objects that represent users
 var uc = 0; // this is our user counter 
 var lpc = null; // logged in player code (fancy name for position in array)
  
-var person  // */ This person object won't be used but these are the properties of a user
+/*var people  // This people object won't be used but these are the properties of a user
 {
     username;
     password;
@@ -18,6 +18,8 @@ var person  // */ This person object won't be used but these are the properties 
     totalScore;
     avgScore;
 }
+*/
+
 
 function login()
 {
@@ -43,7 +45,7 @@ function signup() //!  this fctn does not get called when i press button
       });
 
     // Adds it to the array (which will be later turned into local storage)
-    person[uc] = {username: usernameTemp, password: passwordTemp, timePlayed: 0, gamesPlayed: 0, totalScore: 0, avgScore: 0};
+    people[uc] = {username: usernameTemp, password: passwordTemp, timePlayed: 0, gamesPlayed: 0, totalScore: 0, avgScore: 0};
     lpc = uc;
     uc++;
 
@@ -52,6 +54,10 @@ function signup() //!  this fctn does not get called when i press button
 
 function loadHome()
 {
+    console.log("Thy function 'loadHome' hath been summoned");
+    console.log(lpc);
+    console.log(people);
+    
     let games_played = document.getElementById("games-played");
     let time_played = document.getElementById("time-played");
     let total_score = document.getElementById("total-score");
@@ -63,9 +69,9 @@ function loadHome()
         //TODO show something that leads to the tutorial
     }
 
-    greetingsinnerHTML = "hello " + person[lpc].username;
-    games_played.innerHTML = "games played " + person[lpc].gamesPlayed;
-    time_played.innerHTML = "time played " + person[lpc].timePlayed;
-    total_Score.innerHTML = "total score " + person[lpc].totalScore;
-    avg_score.innerHTML = "avg score " + person[lpc].avgScore;
+    greetings.innerHTML = "hello " + people[lpc].username;
+    games_played.innerHTML = "games played " + people[lpc].gamesPlayed;
+    time_played.innerHTML = "time played " + people[lpc].timePlayed;
+    total_score.innerHTML = "total score " + people[lpc].totalScore;
+    avg_score.innerHTML = "avg score " + people[lpc].avgScore;
 }
