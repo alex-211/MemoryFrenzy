@@ -10,10 +10,10 @@
         <link rel="application/script" href="../script.js">
         <link rel="icon" type="image/x-icon" href="../IMAGES/Logologo.svg">
         <title>Memory Frenzy - Login</title>
-
-        <body style="text-align: center;" class="login"> <!--text align is temporary for technical prototype-->
+    </head>
+        <body style="text-align: center;" class="login" onload="loadData()"> <!--text align is temporary for technical prototype-->
             <div>
-                <form action="" onsubmit="test()">
+                <form action="" onsubmit="login()">
                     <label for="username">Username: </label> <br> <input type="text" name="username" id="username">
                     <br>
                     <label for="password">Password: </label> <br> <input type="password" name="password" id="password">
@@ -21,6 +21,6 @@
                     <button type="submit" class="btn btn-primary">Login</button> <!--does not work-->
                 </form>
             </div>
+            <script src="../script.js"></script>
         </body>
-    </head>
 </html>
