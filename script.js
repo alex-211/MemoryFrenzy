@@ -125,3 +125,10 @@ function loadData()
     lpc = localStorage.getItem("lpc");
     uc = localStorage.getItem("uc");
 }
+
+function loadGame()
+{
+    loadData();
+    // pensavo di fare una variabile che poi passerò conn lclstorage che in base al gioco selezionato +
+    // carica roba diversa. BOH poi vedo
+}
