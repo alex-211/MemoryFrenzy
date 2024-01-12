@@ -7,6 +7,7 @@ function test()
 var people = [] //* this array will contain objects that represent users 
 var uc = 0; //* this is our user counter 
 var lpc = null; //* logged in player code (fancy name for position in array)
+var sgm = null; //* selected game mode
 
 function login() //! cannot login
 {
@@ -75,6 +76,7 @@ function switchPage(target)
     // converting to a JSON string is necessary as localStorage supports only key-value data
     localStorage.setItem('lpc', lpc);
     localStorage.setItem('uc', uc);
+    localStorage.setItem('sgm', sgm);
 
     window.location.href = target;
 }
@@ -82,6 +84,12 @@ function switchPage(target)
 function loadHome()
 {
     loadData();
+
+    if (lpc == null)
+    {
+        alert("There was a problem logging you in");
+        return;
+    }
     
     let games_played = document.getElementById("games-played");
     let time_played = document.getElementById("time-played");
@@ -121,9 +129,10 @@ function deleteAcc()
 function loadData()
 {
     const storedData = localStorage.getItem('myUserData');
-    people = JSON.parse(storedData) || [];
+    people = JSON.parse(storedData) || []; // this OR || means that if parsing fails it'll return an empty array 
     lpc = localStorage.getItem("lpc");
     uc = localStorage.getItem("uc");
+    sgm = localStorage.getItem("sgm");
 }
 
 function loadGame()
@@ -131,4 +140,9 @@ function loadGame()
     loadData();
     // pensavo di fare una variabile che poi passerò conn lclstorage che in base al gioco selezionato +
     // carica roba diversa. BOH poi vedo
+}
+
+function refreshSelectedGameMode()
+{
+    sgm = document.getElementById("game-modes").value;
 }

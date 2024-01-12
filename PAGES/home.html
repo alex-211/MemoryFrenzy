@@ -15,7 +15,7 @@
     <body onload="loadHome()">
         <h1 id="user-greeting">hello [username]!</h1>
         <label for="game-modes">choose a gamemode:</label>
-        <select name="game-modes" id="game-modes">
+        <select name="game-modes" id="game-modes" onselect="refreshSelectedGameMode()">
             <option value="normal">Normal</option>
             <option value="lclMulti">Local Multiplayer</option>
             <option value="customImg">Custom images</option>
